@@ -4,13 +4,13 @@ ORG 0
 jmp 0x7c0:start
 start:
         cli ; clear Interrupts
-        mov ax, 0x7c0
+        mov ax, 0x7c0 ; set data segment to bootloader's segment.
         mov ds, ax
         mov es, ax
         mov ax, 0x00
         mov ss, ax
-        mov sp, 0x7c00
-        sti
+        mov sp, 0x7c00 ; set stack pointer towards starting of bootloader
+        sti  ; set Interrupts
         mov ah, 0eh
         mov si, message
 print:
